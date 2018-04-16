@@ -9,7 +9,7 @@ public class Sum {
             throw new IllegalArgumentException("Received negative integer, brief restricts this method to positive integers between 0-100");
         }
 
-        throw new SolutionNotImplementedException();
+        return x + y;
     }
 
 }
