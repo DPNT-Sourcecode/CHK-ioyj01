@@ -16,4 +16,20 @@ public class SumTest {
     public void givenFirstArgumentIsNegativeSumThrowsIllegalArgumentException() {
         Sum.sum(-1, 1);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void givenSecondArgumentIsNegativeSumThrowsIllegalArgumentException() {
+        Sum.sum(1, -1);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void givenFirstArgumentGreaterThanMaxSumThrowsIllegalArgumentException() {
+        Sum.sum(101, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void givenSecondArgumentGreaterThanMaxSumThrowsIllegalArgumentException() {
+        Sum.sum(1, 101);
+    }
 }
