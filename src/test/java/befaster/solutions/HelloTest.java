@@ -9,7 +9,7 @@ public class HelloTest {
 
     @Test
     public void givenAnyInputReturnsHelloToTheWorld() {
-        assertThat(Hello.hello(""), equalTo("hello to the world"));
+        assertThat(Hello.hello(""), equalTo("Hello, World!"));
     }
 
 }
