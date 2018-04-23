@@ -27,9 +27,7 @@ public class Checkout {
             if (quantity >= 3 && sku.equals("A")) {
                 totals.add(totalWithDiscount(quantity, price, 3, 130));
             } else if(quantity >= 2 && sku.equals("B")) {
-                int fullPriceItems = quantity % 2;
-                int discountedItems = (quantity - fullPriceItems) / 2;
-                totals.add((fullPriceItems * price) + (discountedItems * 45));
+                totals.add(totalWithDiscount(quantity, price, 2, 45));
             } else {
                 totals.add(quantity * price);
             }
@@ -37,7 +35,7 @@ public class Checkout {
         return totals;
     }
 
-    private int totalWithDiscount(int quantity, int normalUnitPrice, int discountAtQuantity, int priceForDiscountQuantity) {
+    private static int totalWithDiscount(int quantity, int normalUnitPrice, int discountAtQuantity, int priceForDiscountQuantity) {
         int fullPriceItems = quantity % discountAtQuantity;
         int discountedBatches = (quantity - fullPriceItems) / discountAtQuantity;
         return (fullPriceItems * normalUnitPrice) + (discountedBatches * priceForDiscountQuantity);
