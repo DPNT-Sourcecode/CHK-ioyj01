@@ -7,7 +7,6 @@ import java.util.HashMap;
 public class Checkout {
     private static final HashMap<String, Integer> SKUToPriceMappings = new HashMap<>();
 
-
     public static Integer checkout(String skus) {
         int quantity = countMatches(skus,"C");
         if(quantity > 1) {
@@ -15,6 +14,14 @@ public class Checkout {
         }
 
         return 50;
+    }
+
+    private static HashMap<String, Integer> getSKUToPriceMappings() {
+        if (SKUToPriceMappings.isEmpty()) {
+            SKUToPriceMappings
+
+        }
+
     }
 
     private static int countMatches(String mainString, String whatToFind){
