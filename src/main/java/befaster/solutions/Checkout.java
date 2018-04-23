@@ -10,10 +10,13 @@ public class Checkout {
 
     public static Integer checkout(String skus) {
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
-        final List<Integer> totals = new ArrayList<Integer>();
+        final List<Integer> totals = new ArrayList<>();
 
         SKUToPriceMappings.forEach((sku, price) -> {
             int quantity = countMatches(skus,sku);
+
+            if (quantity == 3 && sku.equals("A"))
+
             totals.add(quantity * price);
         });
 
