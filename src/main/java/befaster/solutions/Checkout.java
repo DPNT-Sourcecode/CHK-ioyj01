@@ -25,9 +25,7 @@ public class Checkout {
             int quantity = countMatches(skus,sku);
 
             if (quantity >= 3 && sku.equals("A")) {
-                int fullPriceItems = quantity % 3;
-                int discountedItems = (quantity - fullPriceItems) / 3;
-                totals.add((fullPriceItems * price) + (discountedItems * 130));
+                totals.add(totalWithDiscount(quantity, price, 3, 130));
             } else if(quantity >= 2 && sku.equals("B")) {
                 int fullPriceItems = quantity % 2;
                 int discountedItems = (quantity - fullPriceItems) / 2;
@@ -39,14 +37,17 @@ public class Checkout {
         return totals;
     }
 
+    private int totalWithDiscount(int quantity, int normalUnitPrice, int discountAtQuantity, int priceForDiscountQuantity) {
+        int fullPriceItems = quantity % discountAtQuantity;
+        int discountedBatches = (quantity - fullPriceItems) / discountAtQuantity;
+        return (fullPriceItems * normalUnitPrice) + (discountedBatches * priceForDiscountQuantity);
+    }
+
     private static boolean invalidSKUs(String skus, Set<String> knownSKUs) {
         Set<String> allowedCharacters = new HashSet<>();
         allowedCharacters.addAll(knownSKUs);
         allowedCharacters.addAll(LIKELY_SEPARATORS);
-        if (skus == null || skus.length()  > 0 && containsCharactersOtherThan(skus, allowedCharacters)) {
-            return true;
-        }
-        return false;
+        return skus == null || skus.length() > 0 && containsCharactersOtherThan(skus, allowedCharacters);
     }
 
     private static HashMap<String, Integer> getSKUToPriceMappings() {
