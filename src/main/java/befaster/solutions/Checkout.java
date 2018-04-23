@@ -3,6 +3,7 @@ package befaster.solutions;
 import befaster.runner.SolutionNotImplementedException;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Checkout {
 
@@ -41,7 +42,8 @@ public class Checkout {
         return SKUToPriceMappings;
     }
 
-    private static boolean containsCharactersOtherThan(String toCheck, Set charactersExpected) {
+    private static boolean containsCharactersOtherThan(String toCheck, Set<String> charactersExpected) {
+        Stream<String> charactersStream = charactersExpected.stream();
         
         toCheck.matches()
 
