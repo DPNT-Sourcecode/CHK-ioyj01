@@ -11,10 +11,12 @@ public class Checkout {
     private static final List<String> LIKELY_SEPARATORS = Arrays.asList(" ", ",");
 
     public static Integer checkout(String skus) {
-        if ()
-
 
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
+
+        Set<String> allowedCharacters = SKUToPriceMappings.keySet().addAll(LIKELY_SEPARATORS);
+
+
         final List<Integer> totals = new ArrayList<>();
 
         SKUToPriceMappings.forEach((sku, price) -> {
@@ -45,10 +47,9 @@ public class Checkout {
 
     private static boolean containsCharactersOtherThan(String toCheck, Set<String> charactersExpected) {
         Stream<String> charactersStream = charactersExpected.stream();
-        characters = charactersStream.collect(Collectors.joining());
+        String characters = charactersStream.collect(Collectors.joining(""));
         String regex = "[" + characters + "]+";
-        toCheck.matches()
-
+        return toCheck.matches(regex);
     }
 
     private static int countMatches(String mainString, String whatToFind){
