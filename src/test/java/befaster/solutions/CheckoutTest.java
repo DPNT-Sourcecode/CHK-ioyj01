@@ -32,4 +32,9 @@ public class CheckoutTest {
         assertThat(Checkout.checkout("CCC"), equalTo(60));
     }
 
+    @Test
+    public void given2BsCheckoutReturnsSpecialOfferPrice() {
+        assertThat(Checkout.checkout("BB"), equalTo(60));
+    }
+
 }

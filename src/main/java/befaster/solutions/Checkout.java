@@ -2,25 +2,22 @@ package befaster.solutions;
 
 import befaster.runner.SolutionNotImplementedException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Checkout {
 
     public static Integer checkout(String skus) {
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
-        int total = 0;
+        final List<Integer> totals = new ArrayList<Integer>();
 
         SKUToPriceMappings.forEach((sku, price) -> {
             int quantity = countMatches(skus,sku);
-            total += quantity * price;
-        }
+            totals.add(quantity * price);
+        });
 
-
-        if(quantity > 1) {
-            return quantity * 20;
-        }
-
-        return 50;
+        return totals.stream().mapToInt(Integer::intValue).sum();
     }
 
     private static HashMap<String, Integer> getSKUToPriceMappings() {
