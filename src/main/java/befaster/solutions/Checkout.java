@@ -7,4 +7,9 @@ public class Checkout {
         
         return 50;
     }
+
+    private static int countMatches(String mainString, String whatToFind){
+        String tempString = mainString.replaceAll(whatToFind, "");
+        return (mainString.length()-tempString.length())/whatToFind.length();
+    }
 }
