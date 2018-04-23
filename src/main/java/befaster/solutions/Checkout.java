@@ -3,12 +3,18 @@ package befaster.solutions;
 import befaster.runner.SolutionNotImplementedException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 public class Checkout {
 
+    private static final List<String> LIKELY_SEPARATORS = Arrays.asList(" ", ",");
+
     public static Integer checkout(String skus) {
+        if (skus)
+
+
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
         final List<Integer> totals = new ArrayList<>();
 
