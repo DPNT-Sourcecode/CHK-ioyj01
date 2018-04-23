@@ -2,17 +2,14 @@ package befaster.solutions;
 
 import befaster.runner.SolutionNotImplementedException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Checkout {
 
     private static final List<String> LIKELY_SEPARATORS = Arrays.asList(" ", ",");
 
     public static Integer checkout(String skus) {
-        if (skus)
+        if ()
 
 
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
@@ -42,6 +39,12 @@ public class Checkout {
         SKUToPriceMappings.putIfAbsent("D", 15);
 
         return SKUToPriceMappings;
+    }
+
+    private static boolean containsCharactersOtherThan(String toCheck, Set charactersExpected) {
+        
+        toCheck.matches()
+
     }
 
     private static int countMatches(String mainString, String whatToFind){
