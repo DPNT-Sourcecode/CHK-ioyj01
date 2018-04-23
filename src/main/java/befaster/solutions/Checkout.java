@@ -5,9 +5,10 @@ import befaster.runner.SolutionNotImplementedException;
 import java.util.HashMap;
 
 public class Checkout {
-    private static final HashMap<String, Integer> SKUToPriceMappings = new HashMap<>();
 
     public static Integer checkout(String skus) {
+        HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
+
         int quantity = countMatches(skus,"C");
         if(quantity > 1) {
             return quantity * 20;
@@ -17,6 +18,8 @@ public class Checkout {
     }
 
     private static HashMap<String, Integer> getSKUToPriceMappings() {
+        HashMap<String, Integer> SKUToPriceMappings = new HashMap<>();
+
         SKUToPriceMappings.putIfAbsent("A", 50);
         SKUToPriceMappings.putIfAbsent("B", 30);
         SKUToPriceMappings.putIfAbsent("C", 20);
