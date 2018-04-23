@@ -9,6 +9,10 @@ public class Checkout {
     public static Integer checkout(String skus) {
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
 
+        SKUToPriceMappings.forEach((sku, price) -> {
+
+        }
+
         int quantity = countMatches(skus,"C");
         if(quantity > 1) {
             return quantity * 20;
