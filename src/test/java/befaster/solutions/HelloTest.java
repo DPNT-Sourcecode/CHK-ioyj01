@@ -12,4 +12,14 @@ public class HelloTest {
         assertThat(Hello.hello("John"), equalTo("Hello, John!"));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void givenNullThrowsIllegalArgumentException() {
+        Hello.hello(null);
+    }
+
+    @Test
+    public void givenBlankNameReturnsGreetingWithBlankName() {
+        assertThat(Hello.hello(""), equalTo("Hello, !"));
+    }
+
 }
