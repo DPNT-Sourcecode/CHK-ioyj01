@@ -8,8 +8,8 @@ import static org.hamcrest.Matchers.equalTo;
 public class HelloTest {
 
     @Test
-    public void givenAnyInputReturnsHelloToTheWorld() {
-        assertThat(Hello.hello(""), equalTo("Hello, World!"));
+    public void givenANameReturnsPersonalisedGreeting() {
+        assertThat(Hello.hello("John"), equalTo("Hello, John!"));
     }
 
 }
