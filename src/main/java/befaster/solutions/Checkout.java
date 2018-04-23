@@ -16,7 +16,7 @@ public class Checkout {
         Set<String> allowedCharacters = new HashSet<>();
         allowedCharacters.addAll(SKUToPriceMappings.keySet());
         allowedCharacters.addAll(LIKELY_SEPARATORS);
-        if (containsCharactersOtherThan(skus, allowedCharacters)) {
+        if (skus == null || containsCharactersOtherThan(skus, allowedCharacters)) {
             return -1;
         }
 
@@ -52,7 +52,7 @@ public class Checkout {
         Stream<String> charactersStream = charactersExpected.stream();
         String characters = charactersStream.collect(Collectors.joining(""));
         String regex = "[" + characters + "]+";
-        return toCheck.matches(regex);
+        return !toCheck.matches(regex);
     }
 
     private static int countMatches(String mainString, String whatToFind){

@@ -33,6 +33,11 @@ public class CheckoutTest {
     }
 
     @Test
+    public void givenMultipleItemsInCommaSeparatedFormatCheckoutReturnsUnitPriceTimesQuantity() {
+        assertThat(Checkout.checkout("C,C,C"), equalTo(60));
+    }
+
+    @Test
     public void given2BsCheckoutReturnsSpecialOfferPrice() {
         assertThat(Checkout.checkout("BB"), equalTo(45));
     }
@@ -47,4 +52,13 @@ public class CheckoutTest {
         assertThat(Checkout.checkout("AEA"), equalTo(-1));
     }
 
+    @Test
+    public void givenNullCheckoutReturnsMinusOne() {
+        assertThat(Checkout.checkout(null), equalTo(-1));
+    }
+
+    @Test
+    public void givenNoSKUSCheckoutReturnsZero() {
+        assertThat(Checkout.checkout(""), equalTo(0));
+    }
 }
