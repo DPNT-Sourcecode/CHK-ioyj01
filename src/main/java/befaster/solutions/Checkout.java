@@ -17,11 +17,12 @@ public class Checkout {
     }
 
     private static HashMap<String, Integer> getSKUToPriceMappings() {
-        if (SKUToPriceMappings.isEmpty()) {
-            SKUToPriceMappings
+        SKUToPriceMappings.putIfAbsent("A", 50);
+        SKUToPriceMappings.putIfAbsent("B", 30);
+        SKUToPriceMappings.putIfAbsent("C", 20);
+        SKUToPriceMappings.putIfAbsent("D", 15);
 
-        }
-
+        return SKUToPriceMappings;
     }
 
     private static int countMatches(String mainString, String whatToFind){
