@@ -24,7 +24,8 @@ public class Checkout {
         SKUToPriceMappings.forEach((sku, price) -> {
             int quantity = countMatches(skus,sku);
 
-            if (quantity == 3 && sku.equals("A")) {
+            if (quantity >= 3 && sku.equals("A")) {
+                
                 totals.add(130);
             } else if(quantity == 2 && sku.equals("B")) {
                 totals.add(45);

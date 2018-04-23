@@ -43,8 +43,18 @@ public class CheckoutTest {
     }
 
     @Test
+    public void givenMoreThan2BsCheckoutReturnsPriceWithSpecialOfferDiscounts() {
+        assertThat(Checkout.checkout("BBB"), equalTo(75));
+    }
+
+    @Test
     public void given3AsCheckoutReturnsSpecialOfferPrice() {
         assertThat(Checkout.checkout("AAA"), equalTo(130));
+    }
+
+    @Test
+    public void givenMoreThan3AsCheckoutReturnsPriceWithSpecialOfferDiscounts() {
+        assertThat(Checkout.checkout("AAAA"), equalTo(180));
     }
 
     @Test
