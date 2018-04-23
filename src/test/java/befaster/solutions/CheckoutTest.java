@@ -8,8 +8,23 @@ import static org.hamcrest.Matchers.equalTo;
 public class CheckoutTest {
 
     @Test
-    public void givenOneItemCheckoutReturnsUnitPrice() {
+    public void givenOneItemACheckoutReturnsUnitPriceForA() {
         assertThat(Checkout.checkout("A"), equalTo(50));
+    }
+
+    @Test
+    public void givenOneItemBCheckoutReturnsUnitPriceForB() {
+        assertThat(Checkout.checkout("B"), equalTo(30));
+    }
+
+    @Test
+    public void givenOneItemCCheckoutReturnsUnitPriceForC() {
+        assertThat(Checkout.checkout("C"), equalTo(20));
+    }
+
+    @Test
+    public void givenOneItemDCheckoutReturnsUnitPriceForD() {
+        assertThat(Checkout.checkout("D"), equalTo(15));
     }
 
     @Test
