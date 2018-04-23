@@ -3,6 +3,7 @@ package befaster.solutions;
 import befaster.runner.SolutionNotImplementedException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Checkout {
@@ -44,7 +45,8 @@ public class Checkout {
 
     private static boolean containsCharactersOtherThan(String toCheck, Set<String> charactersExpected) {
         Stream<String> charactersStream = charactersExpected.stream();
-        
+        characters = charactersStream.collect(Collectors.joining());
+        String regex = "[" + characters + "]+";
         toCheck.matches()
 
     }
