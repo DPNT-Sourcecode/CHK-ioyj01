@@ -25,9 +25,13 @@ public class Checkout {
             int quantity = countMatches(skus,sku);
 
             if (quantity >= 3 && sku.equals("A")) {
-                
-                totals.add(130);
-            } else if(quantity == 2 && sku.equals("B")) {
+                int fullPriceItems = quantity % 3;
+                int discountedItems = (quantity - fullPriceItems) / 3;
+                totals.add((fullPriceItems * price) + (discountedItems * 130));
+            } else if(quantity >= 2 && sku.equals("B")) {
+                int fullPriceItems = quantity % 2;
+                int discountedItems = (quantity - fullPriceItems) / 2;
+                totals.add((fullPriceItems * price) + (discountedItems * 45));
                 totals.add(45);
             } else {
                 totals.add(quantity * price);
