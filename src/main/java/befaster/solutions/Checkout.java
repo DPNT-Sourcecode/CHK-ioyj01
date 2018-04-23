@@ -15,9 +15,13 @@ public class Checkout {
         SKUToPriceMappings.forEach((sku, price) -> {
             int quantity = countMatches(skus,sku);
 
-            if (quantity == 3 && sku.equals("A"))
-
-            totals.add(quantity * price);
+            if (quantity == 3 && sku.equals("A")) {
+                totals.add(130);
+            } else if(quantity == 2 && sku.equals("B")) {
+                totals.add(45);
+            } else {
+                totals.add(quantity * price);
+            }
         });
 
         return totals.stream().mapToInt(Integer::intValue).sum();

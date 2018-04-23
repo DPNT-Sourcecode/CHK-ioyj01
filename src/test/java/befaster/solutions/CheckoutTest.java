@@ -39,7 +39,12 @@ public class CheckoutTest {
 
     @Test
     public void given3AsCheckoutReturnsSpecialOfferPrice() {
-        assertThat(Checkout.checkout("AA"), equalTo(130));
+        assertThat(Checkout.checkout("AAA"), equalTo(130));
+    }
+
+    @Test
+    public void givenUnknownSKUIncludedCheckoutReturnsMinusOne() {
+        assertThat(Checkout.checkout("AEA"), equalTo(-1));
     }
 
 }
