@@ -32,7 +32,6 @@ public class Checkout {
                 int fullPriceItems = quantity % 2;
                 int discountedItems = (quantity - fullPriceItems) / 2;
                 totals.add((fullPriceItems * price) + (discountedItems * 45));
-                totals.add(45);
             } else {
                 totals.add(quantity * price);
             }
