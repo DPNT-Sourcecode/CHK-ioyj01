@@ -2,7 +2,12 @@ package befaster.solutions;
 
 import befaster.runner.SolutionNotImplementedException;
 
+import java.util.HashMap;
+
 public class Checkout {
+    private static final HashMap<String, Integer> SKUToPriceMappings = new HashMap<>();
+
+
     public static Integer checkout(String skus) {
         int quantity = countMatches(skus,"C");
         if(quantity > 1) {
