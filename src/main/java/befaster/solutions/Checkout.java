@@ -1,7 +1,5 @@
 package befaster.solutions;
 
-import befaster.runner.SolutionNotImplementedException;
-
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -13,13 +11,14 @@ public class Checkout {
     public static Integer checkout(String skus) {
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
 
-        Set<String> allowedCharacters = new HashSet<>();
-        allowedCharacters.addAll(SKUToPriceMappings.keySet());
-        allowedCharacters.addAll(LIKELY_SEPARATORS);
-        if (skus == null || skus.length()  > 0 && containsCharactersOtherThan(skus, allowedCharacters)) {
-            return -1;
-        }
+        if (invalidSKUs(skus, SKUToPriceMappings.keySet())) return -1;
 
+        final List<Integer> totals = itemTotals(skus, SKUToPriceMappings);
+
+        return totals.stream().mapToInt(Integer::intValue).sum();
+    }
+
+    private static List<Integer> itemTotals(String skus, HashMap<String, Integer> SKUToPriceMappings) {
         final List<Integer> totals = new ArrayList<>();
 
         SKUToPriceMappings.forEach((sku, price) -> {
@@ -33,8 +32,17 @@ public class Checkout {
                 totals.add(quantity * price);
             }
         });
+        return totals;
+    }
 
-        return totals.stream().mapToInt(Integer::intValue).sum();
+    private static boolean invalidSKUs(String skus, Set<String> knownSKUs) {
+        Set<String> allowedCharacters = new HashSet<>();
+        allowedCharacters.addAll(knownSKUs);
+        allowedCharacters.addAll(LIKELY_SEPARATORS);
+        if (skus == null || skus.length()  > 0 && containsCharactersOtherThan(skus, allowedCharacters)) {
+            return true;
+        }
+        return false;
     }
 
     private static HashMap<String, Integer> getSKUToPriceMappings() {
