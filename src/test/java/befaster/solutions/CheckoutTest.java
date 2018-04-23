@@ -6,16 +6,16 @@ import static befaster.solutions.Sum.sum;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-
-@RunWith(Parameterized.class)
 public class CheckoutTest {
 
     @Test
-    public void givenOneItemCheckoutReturnsCorrectPrice() {
+    public void givenOneItemCheckoutReturnsUnitPrice() {
+        assertThat(Checkout.checkout("A"), equalTo(50));
+    }
 
+    @Test
+    public void givenMultipleItemsWhereNoSpecialOfferCheckoutReturnsUnitPriceTimesQuantity() {
+        assertThat(Checkout.checkout("CCC"), equalTo(60));
     }
 
 }
