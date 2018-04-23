@@ -13,7 +13,8 @@ public class Checkout {
     public static Integer checkout(String skus) {
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
 
-        Set<String> allowedCharacters = SKUToPriceMappings.keySet();
+        Set<String> allowedCharacters = new HashSet<>();
+        allowedCharacters.addAll(SKUToPriceMappings.keySet());
         allowedCharacters.addAll(LIKELY_SEPARATORS);
         if (containsCharactersOtherThan(skus, allowedCharacters)) {
             return -1;
