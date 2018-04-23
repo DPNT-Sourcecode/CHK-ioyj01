@@ -16,7 +16,7 @@ public class Checkout {
         Set<String> allowedCharacters = new HashSet<>();
         allowedCharacters.addAll(SKUToPriceMappings.keySet());
         allowedCharacters.addAll(LIKELY_SEPARATORS);
-        if (skus == null || containsCharactersOtherThan(skus, allowedCharacters)) {
+        if (skus == null || skus.length()  > 0 && containsCharactersOtherThan(skus, allowedCharacters)) {
             return -1;
         }
 
