@@ -11,11 +11,13 @@ public class Checkout {
     private static final List<String> LIKELY_SEPARATORS = Arrays.asList(" ", ",");
 
     public static Integer checkout(String skus) {
-
         HashMap<String, Integer> SKUToPriceMappings = getSKUToPriceMappings();
 
-        Set<String> allowedCharacters = SKUToPriceMappings.keySet().addAll(LIKELY_SEPARATORS);
-
+        Set<String> allowedCharacters = SKUToPriceMappings.keySet();
+        allowedCharacters.addAll(LIKELY_SEPARATORS);
+        if (containsCharactersOtherThan(skus, allowedCharacters)) {
+            return -1;
+        }
 
         final List<Integer> totals = new ArrayList<>();
 
